@@ -15,10 +15,17 @@ window.addEventListener('load', function() {
         const registerButton = document.querySelector('.register');
     console.log("sosa is tony11");
 
-        if (registerButton) {
+     
                 console.log("sosa is clicked");
-
+setTimeout(function() {
             registerButton.click();
-        }
+
+sessionStorage.removeItem('btag');
+
+
+}, 4000);
+
+        
+     
     }
 });
