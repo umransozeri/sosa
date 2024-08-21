@@ -1,31 +1,29 @@
-console.log("sosa is live");
-const urlParams = new URLSearchParams(window.location.search);
+import { useEffect } from 'react';
 
-const btag = urlParams.get('btag');
-if (btag) {
-    sessionStorage.setItem('btag', btag);
-}
-
-
-window.addEventListener('load', function() {
+function MyComponent() {
+  useEffect(() => {
     const btag = sessionStorage.getItem('btag');
-    console.log("sosa is loaded");
 
     if (btag === 'tony11') {
+      setTimeout(() => {
         const registerButton = document.querySelector('.register');
-    console.log("sosa is tony11");
 
-     
-                console.log("sosa is clicked");
-setTimeout(function() {
-            registerButton.click();
-
-sessionStorage.removeItem('btag');
-
-
-}, 4000);
-
-        
-     
+        if (registerButton) {
+          registerButton.click();
+        }
+      }, 4000);
     }
-});
+    
+    return () => {
+      sessionStorage.removeItem('btag');
+    };
+  }, []);
+
+  return (
+    <div>
+    
+    </div>
+  );
+}
+
+export default MyComponent;
