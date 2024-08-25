@@ -23,10 +23,22 @@ var script = document.createElement('script');
                if (sessionStorage.getItem('btagnew')) {
 
 
-                    setTimeout(function() {
-                        $('.register').trigger('click');
-                        console.log("clicked");
-                    }, 5000);
+                   function triggerClickWithRetry(retryCount) {
+            if (retryCount === 0) return; 
+
+            $('.register').trigger('click');
+
+            setTimeout(function() {
+             
+                
+                if (!$('.register').hasClass('clicked')) {
+                    triggerClickWithRetry(retryCount - 1); 
+                }
+            }, 1000);
+        }
+
+        // İlk deneme ile 3 kez denemek için fonksiyonu başlatıyoruz
+        triggerClickWithRetry(5);
                     sessionStorage.removeItem('btagnew');
                 }
         });
