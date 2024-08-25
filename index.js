@@ -37,7 +37,6 @@ var script = document.createElement('script');
             }, 1000);
         }
 
-        // İlk deneme ile 3 kez denemek için fonksiyonu başlatıyoruz
         triggerClickWithRetry(5);
                     sessionStorage.removeItem('btagnew');
                 }
